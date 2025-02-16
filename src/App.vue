@@ -1,11 +1,13 @@
 import get from "./assets/post.js";
 
 <template>
-
   <div class="black-bg" v-if="modal_open == true">
     <div class="white-bg">
-      <h4>페이지임</h4> 
-      <p>내용임</p>
+      <h3>집 상세내용</h3>
+      <img :src=onerooms[click_number].image>
+      <h4>{{ onerooms[click_number].title }}</h4> 
+      <p>가격 : {{ onerooms[click_number].price }}</p>
+      <p>{{ onerooms[click_number].content }}</p>
       <button @click="modal_open = false">닫기</button>
     </div>
   </div>
@@ -15,9 +17,12 @@ import get from "./assets/post.js";
     <a>Products</a>
     <a>About</a>
   </div>
+
+  
+
   <div v-for="a, i in onerooms" :key="i">
-    <img class="image" src=a.image>
-    <h4 @click="modal_open = true">{{ a.title }}</h4>
+    <img class="image" :src=a.image>
+    <h4 @click="modal_open = true; click_number = i">{{ a.title }}</h4>
     <p>{{ a.price }} 만원</p>
     <p>{{ a.content }}</p>
     <button @click="reports[i]++">허위매물신고</button> <span>신고수 : {{ reports[i] }}</span>
@@ -34,11 +39,12 @@ export default {
   data() {
     return {
       onerooms : data,
-      reports : [0, 0, 0],
+      reports : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       menus : ["Home", "Shop", "About"],
       prices : ["70", "110", "30"],
       products : ["역삼동원룸", "천호동원룸", "마포구원룸룸"],
-      modal_open : false
+      modal_open : false,
+      click_number : 0
     }
   },
   methods : {
@@ -78,7 +84,7 @@ div {
 
 .menu {
   background: darkslateblue;
-  padding: 15px;
+  padding: 15px;;
   border-radius: 5px;
 }
 
