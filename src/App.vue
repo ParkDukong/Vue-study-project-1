@@ -19,9 +19,9 @@ import get from "./assets/post.js";
 
 <script>
 import data from "./assets/post.js";
-import DiscountBanner from "./DiscountBanner.vue";
-import ModalWindow from "./ModalWindow.vue";
-import HomeView from "./HomeView.vue";
+import DiscountBanner from "./components/DiscountBanner.vue";
+import ModalWindow from "./components/ModalWindow.vue";
+import HomeView from "./components/HomeView.vue";
 
 export default {
   name: 'App',
