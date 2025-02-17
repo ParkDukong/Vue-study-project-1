@@ -1,6 +1,8 @@
 import get from "./assets/post.js";
 
 <template>
+  <h1>VuedongSan 🍀</h1>
+  
   <Modal @closeModal="modal_open=false" :onerooms = "onerooms" :click_number = "click_number" :modal_open = "modal_open"></Modal>
 
   <div class="menu">
@@ -75,7 +77,7 @@ div {
 }
 
 .menu {
-  background: darkslateblue;
+  background: rgb(61, 139, 68);
   padding: 15px;;
   border-radius: 5px;
 }
