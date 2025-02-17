@@ -1,16 +1,7 @@
 import get from "./assets/post.js";
 
 <template>
-  <div class="black-bg" v-if="modal_open == true">
-    <div class="white-bg">
-      <h3>집 상세내용</h3>
-      <img :src=onerooms[click_number].image>
-      <h4>{{ onerooms[click_number].title }}</h4> 
-      <p>가격 : {{ onerooms[click_number].price }}</p>
-      <p>{{ onerooms[click_number].content }}</p>
-      <button @click="modal_open = false">닫기</button>
-    </div>
-  </div>
+  <Modal :onerooms = "onerooms" :click_number = "click_number" ></Modal>
 
   <div class="menu">
     <a v-for="text in menus" :key="text">{{text}}</a>
@@ -20,13 +11,7 @@ import get from "./assets/post.js";
 
   <Discount></Discount>
 
-  <div v-for="a, i in onerooms" :key="i">
-    <img class="image" :src=a.image>
-    <h4 @click="modal_open = true; click_number = i">{{ a.title }}</h4>
-    <p>{{ a.price }} 만원</p>
-    <p>{{ a.content }}</p>
-    <button @click="reports[i]++">허위매물신고</button> <span>신고수 : {{ reports[i] }}</span>
-  </div>
+  <Home :onerome="onerooms[i]" v-for="(a, i) in onerooms" :key="i"></Home>
 
 </template>
 
@@ -34,6 +19,7 @@ import get from "./assets/post.js";
 import data from "./assets/post.js";
 import DiscountBanner from "./DiscountBanner.vue";
 import ModalWindow from "./ModalWindow.vue";
+import HomeView from "./HomeView.vue";
 
 export default {
   name: 'App',
@@ -55,7 +41,8 @@ export default {
   },
   components: {
     Discount : DiscountBanner,
-    Modal : ModalWindow
+    Modal : ModalWindow,
+    Home : HomeView
   }
 }
 
