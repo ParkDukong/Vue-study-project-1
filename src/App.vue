@@ -1,7 +1,8 @@
+/* eslint-disable */
 import get from "./assets/post.js";
 
 <template>
-  <Modal :onerooms = "onerooms" :click_number = "click_number" ></Modal>
+  <Modal :onerooms = "onerooms" :click_number = "click_number" :modal_open = "modal_open"></Modal>
 
   <div class="menu">
     <a v-for="text in menus" :key="text">{{text}}</a>
@@ -11,7 +12,8 @@ import get from "./assets/post.js";
 
   <Discount></Discount>
 
-  <Home :onerome="onerooms[i]" v-for="(a, i) in onerooms" :key="i"></Home>
+  <Home :oneroom="onerooms[i]" v-for="(a, i) in onerooms" :key="i"></Home>
+  <p>{{ onerooms }}</p>
 
 </template>
 
