@@ -18,7 +18,7 @@ import get from "./assets/post.js";
     <a>About</a>
   </div>
 
-  
+  <Discount></Discount>
 
   <div v-for="a, i in onerooms" :key="i">
     <img class="image" :src=a.image>
@@ -32,7 +32,8 @@ import get from "./assets/post.js";
 
 <script>
 import data from "./assets/post.js";
-
+import DiscountBanner from "./DiscountBanner.vue";
+import ModalWindow from "./ModalWindow.vue";
 
 export default {
   name: 'App',
@@ -51,6 +52,10 @@ export default {
     function_name() {
 
     }
+  },
+  components: {
+    Discount : DiscountBanner,
+    Modal : ModalWindow
   }
 }
 
