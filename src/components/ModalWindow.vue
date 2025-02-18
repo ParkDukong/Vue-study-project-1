@@ -10,8 +10,7 @@
           <option>냉장고</option>
           <option>청소기</option>
         </select>
-        <p></p>
-        <input v-model="month">
+        <input v-model.number="month">
         <p>{{ month }}개월 선택 가격 : {{ onerooms[click_number].price * month }}</p>
         <p>선택 기본 1개 옵션 : {{ option }}</p>
         <p>{{ onerooms[click_number].content }}</p>
@@ -26,9 +25,27 @@ export default {
     data() {
         return {
             month : 1,
-            option : ""
+            option : "",
+            view_message : ""
         }
     }, 
+    watch : {
+    month(data) {
+      if (data >= 13) {
+        alert("12개월이 최대 계약일입니다.")
+      }
+      
+      if (typeof data == "string") {
+        if (this.month != "") {
+          alert("숫자를 입력하세요.")
+          this.month = 1
+        }
+        else {
+          this.month = 0
+        }
+    }
+    },
+  },
     props : {
       onerooms : Array,
       click_number : Number,
