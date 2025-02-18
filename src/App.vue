@@ -3,7 +3,9 @@ import get from "./assets/post.js";
 <template>
   <h1>VuedongSan 🍀</h1>
   
-  <Modal @closeModal="modal_open=false" :onerooms = "onerooms" :click_number = "click_number" :modal_open = "modal_open"></Modal>
+  <Transition name="fade">
+    <Modal @closeModal="modal_open=false" :onerooms = "onerooms" :click_number = "click_number" :modal_open = "modal_open"></Modal>
+  </Transition>
 
   <div class="menu">
     <a v-for="text in menus" :key="text">{{text}}</a>
@@ -51,6 +53,30 @@ export default {
 </script>
 
 <style>
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 0.5s;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-leave-from {
+  opacity: 1    ;
+}
+
+.fade-leave-active {
+  transition: all 0.5s;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
 body {
   margin: 0
 }
