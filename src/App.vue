@@ -15,6 +15,11 @@ import get from "./assets/post.js";
 
   <Discount></Discount>
 
+  <button @click="priceSort">가격 낮은 순 정렬</button>
+  <button @click="priceReverseSort">가격 높은 순 정렬</button>
+  <button @click="priceSortReset">정렬 안 하기</button>
+  <button @click="priceSortTexts">가나다 순 정렬</button>
+
   <Home @openModal="modal_open = true; click_number = $event" :oneroom="onerooms[i]" v-for="(a, i) in onerooms" :key="i"></Home>
 
 </template>
@@ -29,7 +34,8 @@ export default {
   name: 'App',
   data() {
     return {
-      onerooms : data,
+      onerooms : [...data],
+      oneroomsOriginal : data,
       reports : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       menus : ["Home", "Shop", "About"],
       prices : ["70", "110", "30"],
@@ -39,8 +45,24 @@ export default {
     }
   },
   methods : {
-    function_name() {
-
+    priceSort() {
+      this.onerooms.sort(function(a, b) {
+        return a.price - b.price
+      })
+    },
+    priceReverseSort() {
+      this.onerooms.sort(function(a, b) {
+        return a.price - b.price
+      }).reverse()
+    },
+    priceSortReset() {
+      this.onerooms = [...this.oneroomsOriginal]
+    },
+    priceSortTexts() {
+      this.onerooms.sort(function(a, b) {
+        return a.title, b.title
+      })
+      console.log(this.onerooms)
     }
   },
   components: {
